@@ -12,7 +12,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>Platformer</ApplicationTitle>
+		<ApplicationTitle>Super Mario Jump</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.platformer</ApplicationId>
@@ -54,6 +54,7 @@
 	  <None Remove="Resources\Images\mariojump.png" />
 	  <None Remove="Resources\Images\mariostuck.png" />
 	  <None Remove="Resources\Raw\jump.wav" />
+	  <None Remove="Resources\Raw\Upgrades.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -64,6 +65,11 @@
 	  <MauiXaml Update="Views\Game.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Resources\Images\UpgradeIcons\" />
+	  <Folder Include="ViewModel\" />
 	</ItemGroup>
 
 </Project>

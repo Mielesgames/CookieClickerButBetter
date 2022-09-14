@@ -164,11 +164,11 @@ public partial class Game : ContentPage
                 if (score > 1000 && score < 1000000)
         {
             double convertedScore = Math.Round((double)score / 1000,1);
-            ScoreDisplay.Text = $"Jumped {convertedScore}K times";
+            ScoreDisplay.Text = $"{convertedScore}K Jumps";
         }
         else
         {
-            ScoreDisplay.Text = $"Jumped {Math.Round(score,1)} times";
+            ScoreDisplay.Text = $"{Math.Round(score,1)} Jumps";
         }
 
         if (costShoe >1000 && costShoe < 1000000)
