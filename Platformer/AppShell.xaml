@@ -10,7 +10,7 @@
     <ShellContent
         Title="Platformer"
         ContentTemplate="{DataTemplate views:Game}"
-        Route="Game"/>
+        Route="GamePage"/>
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"

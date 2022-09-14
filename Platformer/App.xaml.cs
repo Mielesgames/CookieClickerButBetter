@@ -1,4 +1,6 @@
-﻿namespace Platformer;
+﻿using Platformer.Views;
+
+namespace Platformer;
 
 public partial class App : Application
 {

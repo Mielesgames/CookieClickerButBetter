@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Platformer.Models"
+             xmlns:viewmodel="clr-namespace:Platformer.ViewModel"
              x:Class="Platformer.Views.Game"
+             x:DataType="viewmodel:UpgradesViewModel"
              Title="Game">
     <Grid ColumnDefinitions="*,*,*,*,*" RowDefinitions="*,*,*,*,*,*,*,*,*,*">
         <!-- Mario Jump screen -->
@@ -18,6 +21,48 @@
         <!-- Shop -->
         <VerticalStackLayout BackgroundColor="Black" Grid.ColumnSpan="10" Grid.RowSpan="10" x:Name="ShopGui">
             <Label Text="Shop"/>
+            <!---->
+            <Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="5"
+                  RowDefinitions="*,Auto"
+                  RowSpacing="0">
+                <ScrollView Orientation="Vertical" Grid.ColumnSpan="2">
+                    <CollectionView ItemsSource="{Binding Upgrades}"
+                                    SelectionMode="Single"
+                                    HeightRequest="100">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Upgrade">
+                                <Frame HeightRequest="125" BackgroundColor="Blue">
+                                    <Grid Padding="0" ColumnDefinitions="125,*">
+                                        <Button Text="+"/>
+                                        <StackLayout Orientation="Horizontal" Grid.Column="1"
+                                                         Padding="10"
+                                                         VerticalOptions="Center">
+                                            <Label Text="{Binding UpgradeName}" TextColor="White"/>
+                                            <Label Text="{Binding DefaultCost}" TextColor="Black"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    
+                    </CollectionView>
+                </ScrollView>
+                <Button Command="{Binding GetUpgradesCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="8"
+                        Text="LoadUpgrades"/>
+                <ActivityIndicator IsVisible="{Binding IsBusy}"
+                                   IsRunning="{Binding IsBusy}"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="CenterAndExpand"
+                                   Grid.RowSpan="2"
+                                   Grid.ColumnSpan="2"/>
+
+            </Grid>
+            <!---->
             <Button Text="Close" Clicked="Shop_Pressed"/>
             <Frame BackgroundColor="Green">
                 <HorizontalStackLayout>

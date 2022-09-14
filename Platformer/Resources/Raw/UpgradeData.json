@@ -1,21 +1,21 @@
 [
   {
     "Icon": "shoes.svg",
-    "Upgrade": "Shoes",
+    "UpgradeName": "Shoes",
     "DefaultCost": 10,
     "ExtraCostPerUpgrade": 1.1,
     "ExtraJumpsPerUpgrade": 1
   },
   {
     "Icon": "mustache.svg",
-    "Upgrade": "Mustache",
+    "UpgradeName": "Mustache",
     "DefaultCost": 500,
     "ExtraCostPerUpgrade": 1.1,
     "ExtraJumpsPerUpgrade": 10
   },
   {
     "Icon": "cap.svg",
-    "Upgrade": "Cap",
+    "UpgradeName": "Cap",
     "DefaultCost": 10000,
     "ExtraCostPerUpgrade": 1.1,
     "ExtraJumpsPerUpgrade": 500

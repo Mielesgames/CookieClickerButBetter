@@ -1,5 +1,7 @@
+using Android.Media;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Platform;
+using Platformer.ViewModel;
 using Plugin.Maui.Audio;
 using System.Runtime.Intrinsics.X86;
 
@@ -23,9 +25,10 @@ public partial class Game : ContentPage
     private readonly IAudioManager audioManager;
     //
 
-    public Game(IAudioManager audioManager)
+    public Game(UpgradesViewModel upgradesViewModel, IAudioManager audioManager)
 	{
 		InitializeComponent();
+        BindingContext = upgradesViewModel;
         /////
         this.audioManager = audioManager;
         ////
