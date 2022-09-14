@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Platformer.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" 
+                RotationX="60"
+                RotationY="20"
+                ScaleY="2.3"/>
+
+            <Label
+                x:Name="welcomeText"
+                Text="Hello, World!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Ẅ̵͔́e̷̛̮l̴͎̈c̵͈͐ǒ̸̠ṃ̸̋ḛ̵͝ ̵͔̉t̴͔̒ỏ̵͓ ̵̟͝.̶̰̔N̸̯̈́E̵̠͑T̷͉͊ ̵̫̾M̸͍̕u̵̞͠l̸͙͘t̷̰̂ȉ̴̞-̶̻̆p̸̺̍l̵̞̒a̸̳͑t̵̥̚f̸͎̓ö̶͙r̴̼͝m̴̖͆ ̴̦́A̸̯̒p̵̞͌p̶̰̓ ̸̥̑Û̷̧I̵̫̋"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="CounterBtn"
+                Text="WARNING, THIS BUTTON WILL RESET ALL YOUR PROGRESS!"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

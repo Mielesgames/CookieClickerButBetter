@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Platformer.Views.Game"
+             Title="Game">
+    <Grid ColumnDefinitions="*,*,*,*,*" RowDefinitions="*,*,*,*,*,*,*,*,*,*">
+        <!-- Mario Jump screen -->
+        <Image Source="map.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill" AnchorX="200" Grid.RowSpan="10" Grid.ColumnSpan="5"/>
+        <Frame Grid.ColumnSpan="10" Grid.RowSpan="10" BackgroundColor="Transparent">
+            <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*,*">
+                <Image Source="marioidle.png" x:Name="player" HeightRequest="100" WidthRequest="100" Grid.Column="1" Grid.Row="1"/>
+                <Label x:Name="ScoreDisplay" Text="... Jumps" TextColor="White" BackgroundColor="Black" Grid.Row="2" Grid.ColumnSpan="3" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontSize="30"/>
+            </Grid>
+            
+        </Frame>
+        <Button CornerRadius="90" Text="Jump!" TextColor="White" FontSize="22" Grid.Row="8" Grid.ColumnSpan="5" Pressed="Up_Pressed" BackgroundColor="Green"/>
+        <Button CornerRadius="90" Text="Shop" TextColor="White" FontSize="22" Grid.Row="9" Grid.ColumnSpan="5" Pressed="Shop_Pressed" BackgroundColor="Blue"/>
+        <!-- Shop -->
+        <VerticalStackLayout BackgroundColor="Black" Grid.ColumnSpan="10" Grid.RowSpan="10" x:Name="ShopGui">
+            <Label Text="Shop"/>
+            <Button Text="Close" Clicked="Shop_Pressed"/>
+            <Frame BackgroundColor="Green">
+                <HorizontalStackLayout>
+                    <Label x:Name="ShoeCosts" Text="Shoe Quality (? Jumps)" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    <Button x:Name="UpgradeShoes" Text="+" Clicked="UpgradeShoes_Clicked" VerticalOptions="Center" HorizontalOptions="End"/>
+                </HorizontalStackLayout>
+            </Frame>
+            <Frame BackgroundColor="Red">
+                <HorizontalStackLayout>
+                    <Label x:Name="MustacheCosts" Text="Upgrade Mustache" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    <Button x:Name="UpgradeMustache" Text="+" Clicked="UpgradeMustache_Clicked" VerticalOptions="Center" HorizontalOptions="Start"/>
+                </HorizontalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
