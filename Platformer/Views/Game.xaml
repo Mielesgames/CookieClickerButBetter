@@ -28,19 +28,20 @@
                   RowSpacing="0">
                 <ScrollView Orientation="Vertical" Grid.ColumnSpan="2">
                     <CollectionView ItemsSource="{Binding Upgrades}"
-                                    SelectionMode="Single"
-                                    HeightRequest="100">
+                                    SelectionMode="Single">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="model:Upgrade">
-                                <Frame HeightRequest="125" BackgroundColor="Blue">
-                                    <Grid Padding="0" ColumnDefinitions="125,*">
-                                        <Button Text="+"/>
-                                        <StackLayout Orientation="Horizontal" Grid.Column="1"
+                                <Frame HeightRequest="125" BackgroundColor="Wheat">
+                                    <Grid Padding="0" ColumnDefinitions="250,100">
+                                        <StackLayout Orientation="Horizontal" Grid.Column="0"
                                                          Padding="10"
                                                          VerticalOptions="Center">
-                                            <Label Text="{Binding UpgradeName}" TextColor="White"/>
-                                            <Label Text="{Binding DefaultCost}" TextColor="Black"/>
+                                            <Label Text="Upgrade " TextColor="Black"/>
+                                            <Label Text="{Binding UpgradeName}" TextColor="Black"/>
+                                            <Label Text="    $" TextColor="Green"/>
+                                            <Label Text="{Binding DefaultCost}" TextColor="Green" x:Name="{Binding UpgradeName}"/>
                                         </StackLayout>
+                                        <Button Text="+" Clicked="Upgrade_Pressed" BackgroundColor="Green" FontSize="50" TextColor="Black" Grid.Column="1"/>
                                     </Grid>
                                 </Frame>
                             </DataTemplate>
@@ -64,18 +65,6 @@
             </Grid>
             <!---->
             <Button Text="Close" Clicked="Shop_Pressed"/>
-            <Frame BackgroundColor="Green">
-                <HorizontalStackLayout>
-                    <Label x:Name="ShoeCosts" Text="Shoe Quality (? Jumps)" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                    <Button x:Name="UpgradeShoes" Text="+" Clicked="UpgradeShoes_Clicked" VerticalOptions="Center" HorizontalOptions="End"/>
-                </HorizontalStackLayout>
-            </Frame>
-            <Frame BackgroundColor="Red">
-                <HorizontalStackLayout>
-                    <Label x:Name="MustacheCosts" Text="Upgrade Mustache" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                    <Button x:Name="UpgradeMustache" Text="+" Clicked="UpgradeMustache_Clicked" VerticalOptions="Center" HorizontalOptions="Start"/>
-                </HorizontalStackLayout>
-            </Frame>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

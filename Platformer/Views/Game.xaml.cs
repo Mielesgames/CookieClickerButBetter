@@ -1,9 +1,10 @@
-using Android.Media;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Platform;
+using Platformer.Models;
 using Platformer.ViewModel;
 using Plugin.Maui.Audio;
 using System.Runtime.Intrinsics.X86;
+using System.Windows.Input;
 
 namespace Platformer.Views;
 
@@ -132,18 +133,6 @@ public partial class Game : ContentPage
         }
 	}
 
-    private void UpgradeShoes_Clicked(object sender, EventArgs e)
-    {
-        if (score >= costShoe)
-        {
-            score -= costShoe;
-            ScorePerJump +=  1;
-            costShoe *= 1.1;
-            Preferences.Set("ShoeCost", costShoe);
-            Preferences.Set("PointsPerJump", ScorePerJump);
-            RefreshAll(1);
-        }
-    }
 
     private async void Shop_Pressed(object sender, EventArgs e)
     {
@@ -173,38 +162,25 @@ public partial class Game : ContentPage
         {
             ScoreDisplay.Text = $"{Math.Round(score,1)} Jumps";
         }
-
-        if (costShoe >1000 && costShoe < 1000000)
-        {
-            double ConvertedShoeCost = Math.Round((double)costShoe / 1000,1);
-            ShoeCosts.Text = $"Upgrade Shoe Quality ${ConvertedShoeCost}K Jumps";
-        }
-        else
-        {
-            var shoeCostRounded = Math.Round(costShoe, 1);
-            ShoeCosts.Text = $"Upgrade Shoe Quality ${shoeCostRounded} Jumps";
-        }
-        if (MustacheCost > 1000 && MustacheCost < 1000000)
-        {
-            double convertedMustacheCost = Math.Round(MustacheCost / 1000, 1);
-            MustacheCosts.Text = $"Evolve Mustache ${convertedMustacheCost}K Jumps";
-        }
-        else
-        {
-            MustacheCosts.Text = $"Evolve Mustache ${Math.Round(MustacheCost)} Jumps";
-        }
     }
-
-    private void UpgradeMustache_Clicked(object sender, EventArgs e)
+    private void Upgrade_Pressed(object sender, EventArgs e)
     {
-        if (score >= MustacheCost)
+        var upgradeInfo = ((VisualElement)sender).BindingContext as Upgrade;
+        if (upgradeInfo == null)
+            return;
+        var name = upgradeInfo.UpgradeName;
+        double Cost = Preferences.Get($"{name}", 0.0);
+        double multiplyBy = upgradeInfo.ExtraCostPerUpgrade;
+        double newCost = Math.Round(Cost * multiplyBy,1);
+        if (score > Cost)
         {
-            score -= MustacheCost;
-            ScorePerJump += 10;
-            MustacheCost *= 1.1;
-            Preferences.Set("MustacheCost", MustacheCost);
+            upgradeInfo.DefaultCost = newCost;
+            score -= Cost;
+            Preferences.Set($"{name}", newCost);
+            ScorePerJump += upgradeInfo.ExtraJumpsPerUpgrade;
             Preferences.Set("PointsPerJump", ScorePerJump);
             RefreshAll(1);
-        } 
+        }
+        
     }
 }
